@@ -1,0 +1,101 @@
+<html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<head>
+  <style>
+body {background-color: white; border: 10px solid powderblue;}
+h1 {color:#ff3300; font-family: verdana;}
+h4 {color:#0039e6; font-family: courier;}
+</style>
+  <title> CacheMoney </title>
+</head>
+<body>
+  <center>
+    <br>
+  <h4> This page is brought to you by </h4>
+  <h1> CACHEMONEY </h1>
+  <img src = "slug.jpg" height=160 width=130>
+  <br>
+  <button onclick= startNEWS()> Begin Parsing </button>
+  <!-- startJSON()  -->
+  <script>
+  var url = 'https://theunitedstates.io/congress-legislators/legislators-current.json';
+  function startJSON(){
+    $.getJSON(url, function(parse) {
+      //alert(Object.keys(parse).length);
+      // alert(JSON.stringify(parse));
+      var names = [];
+      var bios = [];
+      var terms = [];
+      for(var i = 0; i < Object.keys(parse).length; i++){
+        // for(var names in parse[i].name){
+          names[i] = (parse[i].name.official_full);
+          bios[i] = (parse[i].bio);
+          // + parse[i].name.first + " " + parse[i].name.last + " "
+          terms[i] = parse[i].terms[Object.keys(parse[i].terms).length-1].state;
+          // +" "+parse[i].terms[
+          //   Object.keys(parse[i].terms).length-1].end);
+        // };
+        // var names = [JSON.stringify(parse[i].name)];
+      // console.log(names);
+    }; //end length for loop
+      console.log(names);
+      //console.log(bios);
+      console.log(terms);
+      console.log(parse);
+    // jQuery.each(parse, function(i, val){
+    //   $( "#" + i ).append( document.createTextNode( " - " + val ) );
+      //console.log(val.name);
+      // var tblRow = "<tr>" + "<td>" + f.first + "</td>" +
+      // "<td>" + f.last + "</td>" + "<td>" + f.official_full + "</td>" + "</tr>"
+      // $(tblRow).appendTo("#userdata tbody");
+      // console.log(tblRow);
+    //});
+    }
+  );
+}; //end json data
+
+var url1 ='https://newsapi.org/v2/everything?' +
+          'q=Jimmy%Panetta&' +
+        //  'sortBy=latest&' +
+          'apiKey=3c9fb58183c3427f8e34618bbbd406f1';
+
+var articles = [];
+var authors = [];
+var titles = [];
+var url = [];
+
+function startNEWS(){
+  $.getJSON(url1, function(parsenews){
+    var temp = (parsenews[Object.keys(parsenews)[2]]);
+    var temp2 = (temp[0]);
+    var temp3 = (temp2.author);
+
+    for (i = 0; i < temp.length; i++){
+      articles[i] = temp[i];
+      authors[i] = articles[i].author;
+      titles[i] = articles[i].title;
+      url[i] = articles[i].url;
+      console.log(authors[i]);
+      console.log(titles[i]);
+      console.log(url[i]);
+    }
+  });
+};
+
+  </script>
+  <!-- <div class="wrapper">
+<div class="profile">
+   <table id= "userdata" border="2">
+  <thead>
+            <th>First</th>
+            <th>Last</th>
+            <th>Full</th>
+        </thead>
+   </table>
+
+</div>
+</div> -->
+
+  </center>
+</body>
+</html>
