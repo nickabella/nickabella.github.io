@@ -21,14 +21,6 @@ a:hover{
   text-decoration: underline;
 }
 
-a2 {
-	color: white;
-  text-decoration: none;
-}
-a2:hover{
-  cursor: pointer;
-}
-
 ul#horizontal-list {
 	min-width: 696px;
 }
