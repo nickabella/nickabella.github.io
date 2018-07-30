@@ -58,7 +58,7 @@ img {
 
 @media only screen and (max-width: 560px) {
   footer {
-    height: 50%;
+    height: 100%;
   }
   .footer > img {
     width: 100%;
