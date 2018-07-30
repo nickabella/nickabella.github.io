@@ -60,9 +60,6 @@ img {
 }
 
 @media only screen and (max-width: 1080px) {
-  body {
-       background-color: black;
-   }
   img {
     width: 10%;
     height:auto;
