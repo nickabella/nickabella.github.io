@@ -10,13 +10,19 @@ body {
 
 p {
     color: black;
-    font-size: 80%;
+    font-size: 90%;
+    line-height: 120%;
+    /* text-decoration: underline; */
 }
 
 a{
 	color: white;
   text-decoration: none;
 }
+.a2{
+  color: blue;
+}
+
 a:hover{
   text-decoration: underline;
 }
@@ -43,6 +49,16 @@ img:hover{
     left: 0;
     line-height: 100%;
     margin-top: -10%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
+.center2 {
+    font-size: 250%;
+    left: 0;
+    line-height: 100%;
+    margin-top: -20%;
     position: absolute;
     text-align: center;
     top: 50%;
