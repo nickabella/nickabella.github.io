@@ -28,6 +28,10 @@ ul#horizontal-list li {
 	display: inline;
 }
 
+img {
+	image-rendering: -webkit-optimize-contrast;
+}
+
 .center {
     font-size: 250%;
     left: 0;
@@ -50,4 +54,13 @@ ul#horizontal-list li {
     /* color: white; */
     /* text-align: center; */
     /* font-size: 250%; */
+}
+
+@media only screen and (max-width: 560px) {
+  footer {
+    height: 50%;
+  }
+  .footer > img {
+    width: 100%;
+  }
 }
