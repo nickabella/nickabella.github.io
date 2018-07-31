@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/> -->
 
-
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
 <style>
@@ -28,26 +27,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt9AnM_Ba9FoLucjfJyvqxK78S8YMOygs&callback=initMap"></script>
  <div class="center-block" id="map"></div>
 <!-- <input type="number" id="zip"> -->
 <!-- <button onclick=startNEWS()>Click me</button> -->
 
 <script>
-var articles = [];
-var authors = [];
-var titles = [];
-var url = [];
+var articles=[], authors=[], titles=[], url=[];
 
 function startNEWS(link, f_name, l_name, unorderedList, contentString, infoWindow, pos, map){
   $.getJSON(link, function(parsenews){
     var temp = (parsenews[Object.keys(parsenews)[2]]);
-    var temp2 = (temp[0]);
-    var temp3 = (temp2.author);
 
     for (i = 0; i < temp.length; i++){
       articles[i] = temp[i];
-      authors[i] = articles[i].author;
-      titles[i] = articles[i].title;
+      // authors[i] = articles[i].author;
+      // titles[i] = articles[i].title;
       url[i] = articles[i].url;
     }
     // display 3 news links
@@ -127,20 +122,18 @@ function startNEWS(link, f_name, l_name, unorderedList, contentString, infoWindo
                       }
                     }
                   }
-
-            for ( var k = 0; k < Object.keys(outputJson.officials[4].channels).length; k++) {
-              if( 'Twitter' == outputJson.officials[4].channels[k].type ){
-                unorderedList+='<a id = "bottom" target="_blank" href="https://twitter.com/'+outputJson.officials[4].channels[k].id+'">Twitter </a>';
+                var data = outputJson.officials[4].channels;
+                var channels = Object.keys(data);
+            for (k = 0; k < channels.length; k++) {
+              if('YouTube' == data[k].type){
+                unorderedList+='<a id = "bottom" target="_blank" href="https://youtube.com/channel/'+data[k].id+'">YouTube </a>';
               }
-              if( 'Facebook' == outputJson.officials[4].channels[k].type ){
-                unorderedList+='<a id = "bottom" target="_blank" href="https://www.facebook.com/'+outputJson.officials[4].channels[k].id+'"> Facebook</a>';
-              }
-              if( 'YouTube' == outputJson.officials[4].channels[k].type ){
-                unorderedList+='<a id = "bottom" target="_blank" href="https://www.youtube.com/channel/'+outputJson.officials[4].channels[k].id+'"> YouTube</a>';
+              else{
+                unorderedList+='<a id = "bottom" target="_blank" href="https://'+data[k].type+'.com/'+data[k].id+'">'+data[k].type+' </a>';
               }
             }
 
-            // calls news parsing, which re-displays infoWindow b/c I couldn't figure out what else to do
+            // calls news parsing, which I altered to display infoWindow b/c I couldn't figure out what else to do
             startNEWS(link, f_name, l_name, unorderedList, contentString, infoWindow, pos, map);
               }
             );
@@ -155,7 +148,6 @@ function startNEWS(link, f_name, l_name, unorderedList, contentString, infoWindo
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-        // console.log("12th print");
       }
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -164,9 +156,6 @@ function startNEWS(link, f_name, l_name, unorderedList, contentString, infoWindo
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt9AnM_Ba9FoLucjfJyvqxK78S8YMOygs&callback=initMap">
     </script>
 
 </body>
