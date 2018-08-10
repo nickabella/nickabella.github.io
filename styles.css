@@ -64,6 +64,16 @@ img:hover{
     top: 50%;
     width: 100%;
 }
+.center3 {
+    font-size: 150%;
+    left: 0;
+    line-height: 100%;
+    margin-top: -20%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
 .footer {
     /*width:100%;*/
     /*margin:auto;*/
