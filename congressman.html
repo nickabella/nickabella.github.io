@@ -118,7 +118,7 @@ function startNEWS(link, f_name, l_name, unorderedList, contentString, infoWindo
                   if(newRepName == priceJson[i].name.official_full){
                       unorderedList+='<li><a target="_blank" href="https://www.opensecrets.org/members-of-congress/contributors?cid='+priceJson[i].id.opensecrets+'">See '+newRepName+'\'s Campaign Contributors</a></li>';
                       for(var terms in priceJson[i].terms){
-                          contentString+=' |<span style="font-size:15px;">'+" Reprsentative from District " + priceJson[i].terms[Object.keys(priceJson[i].terms).length - 1].district;
+                          contentString+=' |<span style="font-size:15px;">'+" Representative from District " + priceJson[i].terms[Object.keys(priceJson[i].terms).length - 1].district;
                       }
                     }
                   }
